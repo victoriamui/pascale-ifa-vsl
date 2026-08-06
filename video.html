@@ -357,6 +357,23 @@
     margin: 0;
   }
 
+  /* ---------- Post-video CTA, hidden until reveal is triggered ---------- */
+  .video-cta {
+    opacity: 0;
+    transform: translateY(8px);
+    max-height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .video-cta.show {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 200px;
+    pointer-events: auto;
+    margin-bottom: 4px;
+  }
+
   .microline {
     font-family: var(--sans);
     font-size: 13px;
@@ -445,6 +462,13 @@
         <p>Video coming soon</p>
       </div>
 
+      <div class="video-cta" id="videoCta" aria-hidden="true">
+        <a class="cta" href="#" id="bookCallBtn">
+          Book Your Call Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
       <p class="microline">Conditions apply - schedule a call for details</p>
     </div>
   </div>
@@ -460,6 +484,28 @@
       <p class="copyright">&copy; 2026. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+  (function () {
+    var cta = document.getElementById('videoCta');
+
+    function revealCTA() {
+      cta.classList.add('show');
+      cta.setAttribute('aria-hidden', 'false');
+    }
+
+    /* PLACEHOLDER until the real video is embedded: reveals the CTA on a
+       timer to stand in for "near the end of the video". Once the actual
+       Wistia embed is in place, delete this timer and instead bind to the
+       player's timechange event, e.g.:
+         video.bind('timechange', function (t) {
+           if (t >= video.duration() - CTA_SECONDS_BEFORE_END) revealCTA();
+         });
+    */
+    var PLACEHOLDER_REVEAL_DELAY_MS = 8000;
+    setTimeout(revealCTA, PLACEHOLDER_REVEAL_DELAY_MS);
+  })();
+  </script>
 
 </body>
 </html>
