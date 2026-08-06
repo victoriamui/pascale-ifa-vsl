@@ -574,10 +574,16 @@
       </button>
       <h2 id="modalTitle">You're one step away from seeing exactly how it works</h2>
       <p class="modal-sub">Enter your details below to get instant access.</p>
-      <form class="optin-form" id="optinForm" novalidate>
-        <input type="text" id="firstName" name="firstName" placeholder="First Name" autocomplete="given-name" required />
-        <input type="email" id="email" name="email" placeholder="Email Address" autocomplete="email" required />
-        <input type="tel" id="phone" name="phone" placeholder="Phone Number" autocomplete="tel" />
+      <form class="optin-form" id="optinForm" name="WebToLeads22986000000651002" action="https://crm.zohocloud.ca/crm/WebToLeadForm" method="POST" accept-charset="UTF-8" novalidate>
+        <input type="hidden" name="xnQsjsdp" value="dacd44316ea3f728baccb4f877e821c20214a6a1bfe900d4a09293384948099c" />
+        <input type="hidden" name="zc_gad" id="zc_gad" value="" />
+        <input type="hidden" name="xmIwtLD" value="4ed7a5e47cd4b3880e0f32bba7965153bb309af5e0405f0b2c2280c5b2e24aeb1316b7589abee3ec253a2e21ca563860" />
+        <input type="hidden" name="actionType" value="TGVhZHM=" />
+        <input type="hidden" name="returnURL" value="https://ifavsl-victoria-victoriamuis-projects.vercel.app/video.html" />
+        <input type="text" name="aG9uZXlwb3Q" value="" style="display:none;" tabindex="-1" autocomplete="off" />
+        <input type="text" id="firstName" name="Last Name" placeholder="First Name" autocomplete="given-name" required />
+        <input type="email" id="email" name="Email" placeholder="Email Address" autocomplete="email" required />
+        <input type="tel" id="phone" name="Phone" placeholder="Phone Number" autocomplete="tel" />
         <button type="submit" class="cta">
           Get Instant Access
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -655,11 +661,9 @@
     if (e.key === 'Escape' && overlay.classList.contains('open')) { closeModal(); }
   });
 
-  /* client-side only, no backend wired yet */
+  /* posts to Zoho CRM; Zoho's returnURL field handles the redirect to video.html after processing */
   form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (!form.reportValidity()) { return; }
-    window.location.href = 'video.html';
+    if (!form.reportValidity()) { e.preventDefault(); }
   });
 })();
 </script>
